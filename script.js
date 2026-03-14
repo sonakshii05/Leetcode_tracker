@@ -2,16 +2,79 @@ const problems = [
   {
     name: "Two Sum",
     difficulty: "easy",
+    language: "python",
     link: "solutions/sum.py"
   },
   {
     name: "Valid Parentheses",
     difficulty: "easy",
+    language: "python",
+    link: ""
+  },
+  {
+    name: "Contains Duplicate",
+    difficulty: "easy",
+    language: "python",
+    link: ""
+  },
+  {
+    name: "Best Time to Buy and Sell Stock",
+    difficulty: "easy",
+    language: "python",
+    link: ""
+  },
+  {
+    name: "Binary Search",
+    difficulty: "easy",
+    language: "python",
+    link: ""
+  },
+  {
+    name: "Maximum Subarray",
+    difficulty: "easy",
+    language: "python",
+    link: ""
+  },
+  {
+    name: "Merge Sorted Array",
+    difficulty: "easy",
+    language: "python",
+    link: ""
+  },
+  {
+    name: "Valid Parentheses",
+    difficulty: "easy",
+    language: "python",
     link: "YOUR_GITHUB_FILE_LINK"
   },
   {
     name: "Longest Substring Without Repeating Characters",
     difficulty: "medium",
+    language: "python",
+    link: ""
+  },
+  {
+    name: "3Sum",
+    difficulty: "medium",
+    language: "python",
+    link: ""
+  },
+  {
+    name: "Group Anagrams",
+    difficulty: "medium",
+    language: "python",
+    link: ""
+  },
+  {
+    name: "Product of Array Except Self",
+    difficulty: "medium",
+    language: "python",
+    link: ""
+  },
+  {
+    name: "Longest Substring Without Repeating Characters",
+    difficulty: "medium",
+    language: "python",
     link: "YOUR_GITHUB_FILE_LINK"
   }
 ];
@@ -49,6 +112,8 @@ function openSolutionModal(filePath, title) {
   modalTitle.innerText = title;
   modalCode.textContent = "Loading...";
   modal.classList.add("open");
+  modal.style.opacity = "1";
+  modal.style.pointerEvents = "auto";
 
   fetch(filePath)
     .then(res => {
@@ -67,6 +132,53 @@ function openSolutionModal(filePath, title) {
 function closeSolutionModal() {
   const modal = document.getElementById("solutionModal");
   modal.classList.remove("open");
+  modal.style.opacity = "0";
+  modal.style.pointerEvents = "none";
+}
+
+function openProfileModal() {
+  const modal = document.getElementById("profileModal");
+  modal.classList.add("open");
+  modal.style.opacity = "1";
+  modal.style.pointerEvents = "auto";
+
+  // Calculate solved problems (those with links)
+  const solved = problems.filter(p => p.link && p.link !== "YOUR_GITHUB_FILE_LINK" && p.link !== "");
+  const solvedEasy = solved.filter(p => p.difficulty === "easy").length;
+  const solvedMedium = solved.filter(p => p.difficulty === "medium").length;
+  const solvedHard = solved.filter(p => p.difficulty === "hard").length;
+
+  document.getElementById("profileTotal").textContent = solved.length;
+  document.getElementById("profileEasy").textContent = solvedEasy;
+  document.getElementById("profileMedium").textContent = solvedMedium;
+  document.getElementById("profileHard").textContent = solvedHard;
+
+  // Progress
+  const totalProblems = problems.length;
+  const progressPercent = totalProblems > 0 ? Math.round((solved.length / totalProblems) * 100) : 0;
+  document.getElementById("progressFill").style.width = `${progressPercent}%`;
+  document.getElementById("progressText").textContent = `${progressPercent}% Complete`;
+
+  // Languages
+  const languages = {};
+  solved.forEach(p => {
+    languages[p.language] = (languages[p.language] || 0) + 1;
+  });
+
+  const languagesList = document.getElementById("languagesList");
+  languagesList.innerHTML = Object.entries(languages).map(([lang, count]) => `
+    <div class="language-item">
+      <span class="language-name">${lang.charAt(0).toUpperCase() + lang.slice(1)}</span>
+      <span class="language-count">${count}</span>
+    </div>
+  `).join("");
+}
+
+function closeProfileModal() {
+  const modal = document.getElementById("profileModal");
+  modal.classList.remove("open");
+  modal.style.opacity = "0";
+  modal.style.pointerEvents = "none";
 }
 
 
@@ -82,6 +194,11 @@ function setActiveFilter(filter) {
     el.classList.toggle("active", el.dataset.difficulty === filter);
   });
 }
+
+// initial render
+updateStats();
+renderProblems("all");
+setActiveFilter("all");
 
 // wire up filtering
 const statsContainer = document.querySelector(".stats");
@@ -112,7 +229,14 @@ modal.addEventListener("click", event => {
   if (event.target === modal) closeSolutionModal();
 });
 
-// initial render
-updateStats();
-renderProblems("all");
-setActiveFilter("all");
+// profile modal
+const profileBtn = document.getElementById("profileBtn");
+profileBtn.addEventListener("click", openProfileModal);
+
+const profileClose = document.getElementById("profileClose");
+profileClose.addEventListener("click", closeProfileModal);
+
+const profileModal = document.getElementById("profileModal");
+profileModal.addEventListener("click", event => {
+  if (event.target === profileModal) closeProfileModal();
+});

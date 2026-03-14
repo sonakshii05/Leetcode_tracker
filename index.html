@@ -11,9 +11,10 @@
 <div class="app">
 
   <header>
+    <button id="profileBtn" class="profile-btn">👤 Profile</button>
     <h1>🧠 LeetCode Dashboard</h1>
     <div class="stats" role="navigation" aria-label="Filter by difficulty">
-      <div data-difficulty="all">Solved: <span id="total"></span></div>
+      <div data-difficulty="all">Total: <span id="total"></span></div>
       <div class="easy" data-difficulty="easy">Easy: <span id="easy"></span></div>
       <div class="medium" data-difficulty="medium">Medium: <span id="medium"></span></div>
       <div class="hard" data-difficulty="hard">Hard: <span id="hard"></span></div>
@@ -26,9 +27,49 @@
     <div class="modal-content" role="dialog" aria-modal="true">
       <header class="modal-header">
         <h2 id="modalTitle">Solution</h2>
-        <button id="modalClose" aria-label="Close">×</button>
+        <button id="modalClose" aria-label="Close">Close</button>
       </header>
       <pre id="modalCode" class="modal-code"></pre>
+    </div>
+  </div>
+
+  <div id="profileModal" class="modal" aria-hidden="true">
+    <div class="modal-content profile-modal" role="dialog" aria-modal="true">
+      <header class="modal-header">
+        <h2>Profile Dashboard</h2>
+        <button id="profileClose" aria-label="Close">Close</button>
+      </header>
+      <div class="profile-content">
+        <div class="profile-stats">
+          <div class="stat-card">
+            <h3>Total Solved</h3>
+            <span id="profileTotal" class="stat-number">0</span>
+          </div>
+          <div class="stat-card">
+            <h3>Easy</h3>
+            <span id="profileEasy" class="stat-number easy">0</span>
+          </div>
+          <div class="stat-card">
+            <h3>Medium</h3>
+            <span id="profileMedium" class="stat-number medium">0</span>
+          </div>
+          <div class="stat-card">
+            <h3>Hard</h3>
+            <span id="profileHard" class="stat-number hard">0</span>
+          </div>
+        </div>
+        <div class="progress-section">
+          <h3>Progress</h3>
+          <div class="progress-bar">
+            <div id="progressFill" class="progress-fill"></div>
+          </div>
+          <p id="progressText">0% Complete</p>
+        </div>
+        <div class="languages-section">
+          <h3>Languages Used</h3>
+          <div id="languagesList" class="languages-list"></div>
+        </div>
+      </div>
     </div>
   </div>
 
