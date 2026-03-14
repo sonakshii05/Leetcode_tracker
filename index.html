@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>LeetCode Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+  <header>
+    <h1>🧠 LeetCode Dashboard</h1>
+    <div class="stats" role="navigation" aria-label="Filter by difficulty">
+      <div data-difficulty="all">Solved: <span id="total"></span></div>
+      <div class="easy" data-difficulty="easy">Easy: <span id="easy"></span></div>
+      <div class="medium" data-difficulty="medium">Medium: <span id="medium"></span></div>
+      <div class="hard" data-difficulty="hard">Hard: <span id="hard"></span></div>
+    </div>
+  </header>
+
+  <div id="problemList" class="grid"></div>
+
+  <div id="solutionModal" class="modal" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-modal="true">
+      <header class="modal-header">
+        <h2 id="modalTitle">Solution</h2>
+        <button id="modalClose" aria-label="Close">×</button>
+      </header>
+      <pre id="modalCode" class="modal-code"></pre>
+    </div>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
