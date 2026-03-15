@@ -6,14 +6,18 @@ This repository documents my continuous practice of Data Structures & Algorithms
 
 🚀 About This Repository:
 
-1.Practice algorithmic problem solving
-2.Maintain a public record of learning progress
-3.Build consistency through daily coding
+1.Practice algorithmic problem solving.
+
+2.Maintain a public record of learning progress.
+
+3.Build consistency through daily coding.
+
 4.Showcase solutions in a clean and organized.
 
 🐍 Language Used:
 
 1.Python 3
+
 2.Java
 
 🌐 Dashboard:
@@ -23,10 +27,13 @@ GitHub Pages is used to host the dashboard.
 
 🎯 Learning Approach:
 
-Solve problems consistently
-Understand patterns instead of memorizing solutions
-Write clean and readable code
-Improve optimization thinking over time
+Solve problems consistently.
+
+Understand patterns instead of memorizing solutions.
+
+Write clean and readable code.
+
+Improve optimization thinking over time.
 
 📌 Source Platform:
 
@@ -35,7 +42,8 @@ Problems are practiced from:
 
 🔄 Future Improvements:
 
-Add more medium & hard problems
+Add more medium & hard problems.
+
 Pattern-wise categorization
 Progress automation
 Statistics visualization
