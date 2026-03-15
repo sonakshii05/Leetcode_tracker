@@ -76,35 +76,88 @@ const problems = [
     difficulty: "medium",
     language: "python",
     link: "YOUR_GITHUB_FILE_LINK"
-  }
+  },
+  { name: "Two Sum",
+     difficulty: "easy",
+      language: "java", 
+      link: "solutions/TwoSum.java" }
 ];
 
-const stats = {
-  total: problems.length,
-  easy: problems.filter(p => p.difficulty === "easy").length,
-  medium: problems.filter(p => p.difficulty === "medium").length,
-  hard: problems.filter(p => p.difficulty === "hard").length,
-};
+/* ===============================
+   GLOBAL STATE
+================================ */
+
+let currentDifficulty = "all";
+let currentLanguage = "all";
 
 const list = document.getElementById("problemList");
 
-function renderProblems(filter) {
-  const items = filter && filter !== "all"
-    ? problems.filter(p => p.difficulty === filter)
-    : problems;
+
+/* ===============================
+   STATS
+================================ */
+
+function updateStats() {
+  document.getElementById("total").innerText = problems.length;
+  document.getElementById("easy").innerText =
+    problems.filter(p => p.difficulty === "easy").length;
+  document.getElementById("medium").innerText =
+    problems.filter(p => p.difficulty === "medium").length;
+  document.getElementById("hard").innerText =
+    problems.filter(p => p.difficulty === "hard").length;
+}
+
+
+/* ===============================
+   RENDER PROBLEMS
+================================ */
+
+function renderProblems() {
+
+  let items = problems;
+
+  // difficulty filter
+  if (currentDifficulty !== "all") {
+    items = items.filter(p => p.difficulty === currentDifficulty);
+  }
+
+  // language filter
+  if (currentLanguage !== "all") {
+    items = items.filter(p => p.language === currentLanguage);
+  }
 
   list.innerHTML = items.map(p => `
     <div class="card">
+
       <div class="tag ${p.difficulty}">
         ${p.difficulty.toUpperCase()}
       </div>
+
       <h3>${p.name}</h3>
-      <a href="${p.link}" class="solution-link" data-link="${p.link}" data-name="${p.name}">View Solution →</a>
+
+      <p>Language: ${p.language.charAt(0).toUpperCase() + p.language.slice(1)}</p>
+
+      ${
+        p.link && p.link !== "" && p.link !== "YOUR_GITHUB_FILE_LINK"
+        ? `<a href="#" class="solution-link"
+             data-link="${p.link}"
+             data-name="${p.name}">
+             View Solution →
+           </a>`
+        : `<span style="opacity:.5">No solution yet</span>`
+      }
+
     </div>
   `).join("");
 }
 
+
+/* ===============================
+   SOLUTION MODAL
+================================ */
+
 function openSolutionModal(filePath, title) {
+
   const modal = document.getElementById("solutionModal");
   const modalTitle = document.getElementById("modalTitle");
   const modalCode = document.getElementById("modalCode");
@@ -112,131 +165,153 @@ function openSolutionModal(filePath, title) {
   modalTitle.innerText = title;
   modalCode.textContent = "Loading...";
   modal.classList.add("open");
-  modal.style.opacity = "1";
-  modal.style.pointerEvents = "auto";
 
   fetch(filePath)
     .then(res => {
-      if (!res.ok) throw new Error(`Failed to load file: ${res.status}`);
+      if (!res.ok) throw new Error("File not found");
       return res.text();
     })
     .then(code => {
       modalCode.textContent = code;
+      modalCode.scrollTop = 0;
     })
-    .catch(err => {
-      modalCode.textContent = `Unable to load solution: ${err.message} — opening in a new tab instead.`;
+    .catch(() => {
+      modalCode.textContent = "Opening solution in new tab...";
       window.open(filePath, "_blank");
     });
 }
 
 function closeSolutionModal() {
-  const modal = document.getElementById("solutionModal");
-  modal.classList.remove("open");
-  modal.style.opacity = "0";
-  modal.style.pointerEvents = "none";
+  document.getElementById("solutionModal").classList.remove("open");
 }
 
+
+/* ===============================
+   PROFILE MODAL
+================================ */
+
 function openProfileModal() {
+
   const modal = document.getElementById("profileModal");
   modal.classList.add("open");
-  modal.style.opacity = "1";
-  modal.style.pointerEvents = "auto";
 
-  // Calculate solved problems (those with links)
-  const solved = problems.filter(p => p.link && p.link !== "YOUR_GITHUB_FILE_LINK" && p.link !== "");
-  const solvedEasy = solved.filter(p => p.difficulty === "easy").length;
-  const solvedMedium = solved.filter(p => p.difficulty === "medium").length;
-  const solvedHard = solved.filter(p => p.difficulty === "hard").length;
+  const solved = problems.filter(
+    p => p.link && p.link !== "" && p.link !== "YOUR_GITHUB_FILE_LINK"
+  );
 
   document.getElementById("profileTotal").textContent = solved.length;
-  document.getElementById("profileEasy").textContent = solvedEasy;
-  document.getElementById("profileMedium").textContent = solvedMedium;
-  document.getElementById("profileHard").textContent = solvedHard;
+  document.getElementById("profileEasy").textContent =
+    solved.filter(p => p.difficulty === "easy").length;
+  document.getElementById("profileMedium").textContent =
+    solved.filter(p => p.difficulty === "medium").length;
+  document.getElementById("profileHard").textContent =
+    solved.filter(p => p.difficulty === "hard").length;
 
-  // Progress
-  const totalProblems = problems.length;
-  const progressPercent = totalProblems > 0 ? Math.round((solved.length / totalProblems) * 100) : 0;
-  document.getElementById("progressFill").style.width = `${progressPercent}%`;
-  document.getElementById("progressText").textContent = `${progressPercent}% Complete`;
+  const progress =
+    problems.length === 0
+      ? 0
+      : Math.round((solved.length / problems.length) * 100);
 
-  // Languages
+  document.getElementById("progressFill").style.width = progress + "%";
+  document.getElementById("progressText").textContent =
+    progress + "% Complete";
+
+  // language stats
   const languages = {};
   solved.forEach(p => {
     languages[p.language] = (languages[p.language] || 0) + 1;
   });
 
-  const languagesList = document.getElementById("languagesList");
-  languagesList.innerHTML = Object.entries(languages).map(([lang, count]) => `
-    <div class="language-item">
-      <span class="language-name">${lang.charAt(0).toUpperCase() + lang.slice(1)}</span>
-      <span class="language-count">${count}</span>
-    </div>
-  `).join("");
+  document.getElementById("languagesList").innerHTML =
+    Object.entries(languages).map(([lang, count]) => `
+      <div class="language-item">
+        <span>${lang}</span>
+        <span>${count}</span>
+      </div>
+    `).join("");
 }
 
 function closeProfileModal() {
-  const modal = document.getElementById("profileModal");
-  modal.classList.remove("open");
-  modal.style.opacity = "0";
-  modal.style.pointerEvents = "none";
+  document.getElementById("profileModal").classList.remove("open");
 }
 
 
-function updateStats() {
-  document.getElementById("total").innerText = stats.total;
-  document.getElementById("easy").innerText = stats.easy;
-  document.getElementById("medium").innerText = stats.medium;
-  document.getElementById("hard").innerText = stats.hard;
-}
+/* ===============================
+   FILTER UI
+================================ */
 
-function setActiveFilter(filter) {
+function setActiveDifficulty(filter) {
   document.querySelectorAll(".stats > div").forEach(el => {
     el.classList.toggle("active", el.dataset.difficulty === filter);
   });
 }
 
-// initial render
-updateStats();
-renderProblems("all");
-setActiveFilter("all");
+function setActiveLanguage(filter) {
+  document.querySelectorAll(".languages div").forEach(el => {
+    el.classList.toggle("active", el.dataset.language === filter);
+  });
+}
 
-// wire up filtering
-const statsContainer = document.querySelector(".stats");
-statsContainer.addEventListener("click", event => {
-  const target = event.target.closest("div[data-difficulty]");
+
+/* ===============================
+   INITIALIZE
+================================ */
+
+updateStats();
+renderProblems();
+setActiveDifficulty("all");
+setActiveLanguage("all");
+
+
+/* ===============================
+   EVENT LISTENERS
+================================ */
+
+// difficulty filter
+document.querySelector(".stats").addEventListener("click", e => {
+  const target = e.target.closest("div[data-difficulty]");
   if (!target) return;
 
-  const filter = target.dataset.difficulty;
-  renderProblems(filter);
-  setActiveFilter(filter);
+  currentDifficulty = target.dataset.difficulty;
+  renderProblems();
+  setActiveDifficulty(currentDifficulty);
 });
 
-// wire up solution viewer
-list.addEventListener("click", event => {
-  const link = event.target.closest("a.solution-link");
+// language filter
+document.querySelector(".languages").addEventListener("click", e => {
+  const target = e.target.closest("div[data-language]");
+  if (!target) return;
+
+  currentLanguage = target.dataset.language;
+  renderProblems();
+  setActiveLanguage(currentLanguage);
+});
+
+// solution modal
+list.addEventListener("click", e => {
+  const link = e.target.closest(".solution-link");
   if (!link) return;
 
-  event.preventDefault();
+  e.preventDefault();
   openSolutionModal(link.dataset.link, link.dataset.name);
 });
 
-const modalClose = document.getElementById("modalClose");
-modalClose.addEventListener("click", closeSolutionModal);
+document.getElementById("modalClose")
+  .addEventListener("click", closeSolutionModal);
 
-// close modal on outside click
-const modal = document.getElementById("solutionModal");
-modal.addEventListener("click", event => {
-  if (event.target === modal) closeSolutionModal();
-});
+document.getElementById("solutionModal")
+  .addEventListener("click", e => {
+    if (e.target.id === "solutionModal") closeSolutionModal();
+  });
 
 // profile modal
-const profileBtn = document.getElementById("profileBtn");
-profileBtn.addEventListener("click", openProfileModal);
+document.getElementById("profileBtn")
+  .addEventListener("click", openProfileModal);
 
-const profileClose = document.getElementById("profileClose");
-profileClose.addEventListener("click", closeProfileModal);
+document.getElementById("profileClose")
+  .addEventListener("click", closeProfileModal);
 
-const profileModal = document.getElementById("profileModal");
-profileModal.addEventListener("click", event => {
-  if (event.target === profileModal) closeProfileModal();
-});
+document.getElementById("profileModal")
+  .addEventListener("click", e => {
+    if (e.target.id === "profileModal") closeProfileModal();
+  });

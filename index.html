@@ -13,11 +13,18 @@
   <header>
     <button id="profileBtn" class="profile-btn">👤 Profile</button>
     <h1>🧠 LeetCode Dashboard</h1>
-    <div class="stats" role="navigation" aria-label="Filter by difficulty">
+    <div class="filters">
+      <div class="stats" role="navigation" aria-label="Filter by difficulty">
       <div data-difficulty="all">Total: <span id="total"></span></div>
-      <div class="easy" data-difficulty="easy">Easy: <span id="easy"></span></div>
+      <div class="easy" data-difficulty="easy"> Easy: <span id="easy"></span></div>
       <div class="medium" data-difficulty="medium">Medium: <span id="medium"></span></div>
-      <div class="hard" data-difficulty="hard">Hard: <span id="hard"></span></div>
+      <div class="hard" data-difficulty="hard"> Hard: <span id="hard"></span></div>
+      </div>
+      <div class="languages" role="navigation" aria-label="Filter by language">
+        <div data-language="all">All Languages</div>
+        <div data-language="python">Python</div>
+        <div data-language="java">Java</div>
+      </div>
     </div>
   </header>
 
