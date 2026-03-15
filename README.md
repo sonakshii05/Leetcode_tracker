@@ -1,6 +1,6 @@
-🧠 LeetCode Python Tracker
+🧠 LeetCode Tracker
 
-A structured collection of LeetCode problems solved using Python, along with a simple dashboard UI to track progress.
+A structured collection of LeetCode problems solved using Python and Java, along with a simple dashboard UI to track progress.
 
 This repository documents my continuous practice of Data Structures & Algorithms and my journey toward improving problem-solving skills.
 
