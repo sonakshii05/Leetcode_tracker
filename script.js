@@ -6,6 +6,13 @@ const problems = [
     link: "solutions/sum.py"
   },
   {
+    name: "Add Two Numbers",
+    difficulty: "easy",
+    language: "python",
+    link: "solutions/twoNumbers.py"
+  },
+
+  {
     name: "Valid Parentheses",
     difficulty: "easy",
     language: "python",
