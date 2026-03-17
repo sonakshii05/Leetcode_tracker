@@ -5,9 +5,7 @@
   <title>LeetCode Dashboard</title>
   <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-
 <div class="app">
 
   <header>
@@ -15,21 +13,30 @@
     <h1>🧠 LeetCode Dashboard</h1>
     <div class="filters">
       <div class="stats" role="navigation" aria-label="Filter by difficulty">
-      <div data-difficulty="all">Total: <span id="total"></span></div>
-      <div class="easy" data-difficulty="easy"> Easy: <span id="easy"></span></div>
-      <div class="medium" data-difficulty="medium">Medium: <span id="medium"></span></div>
-      <div class="hard" data-difficulty="hard"> Hard: <span id="hard"></span></div>
+        <div data-difficulty="all">Total: <span id="total"></span></div>
+        <div class="easy" data-difficulty="easy">Easy: <span id="easy"></span></div>
+        <div class="medium" data-difficulty="medium">Medium: <span id="medium"></span></div>
+        <div class="hard" data-difficulty="hard">Hard: <span id="hard"></span></div>
       </div>
+
       <div class="languages" role="navigation" aria-label="Filter by language">
         <div data-language="all">All Languages</div>
         <div data-language="python">Python</div>
         <div data-language="java">Java</div>
+      </div>
+
+      <div class="status-filter" role="navigation" aria-label="Filter by status">
+        <div data-status="all">All Status</div>
+        <div data-status="solved">Solved</div>
+        <div data-status="revision">Revision</div>
+        <div data-status="todo">Todo</div>
       </div>
     </div>
   </header>
 
   <div id="problemList" class="grid"></div>
 
+  <!-- Solution Modal -->
   <div id="solutionModal" class="modal" aria-hidden="true">
     <div class="modal-content" role="dialog" aria-modal="true">
       <header class="modal-header">
@@ -40,6 +47,7 @@
     </div>
   </div>
 
+  <!-- Profile Modal -->
   <div id="profileModal" class="modal" aria-hidden="true">
     <div class="modal-content profile-modal" role="dialog" aria-modal="true">
       <header class="modal-header">
@@ -65,6 +73,7 @@
             <span id="profileHard" class="stat-number hard">0</span>
           </div>
         </div>
+
         <div class="progress-section">
           <h3>Progress</h3>
           <div class="progress-bar">
@@ -72,16 +81,31 @@
           </div>
           <p id="progressText">0% Complete</p>
         </div>
+
         <div class="languages-section">
           <h3>Languages Used</h3>
           <div id="languagesList" class="languages-list"></div>
         </div>
+<div class="streak-section">
+  <h3>Current Streak</h3>
+  <p id="streakCount">5 🔥</p>
+</div>
+<div class="tags-section">
+  <h3>Top Topics</h3>
+  <div id="tagsList">
+    <span class="tag">Array</span>
+    <span class="tag">DP</span>
+    <span class="tag">Graph</span>
+  </div>
+</div>
+
       </div>
     </div>
   </div>
 
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
