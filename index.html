@@ -2,110 +2,42 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>LeetCode Dashboard</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CodeTrack | Login</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/auth.css">
 </head>
 <body>
-<div class="app">
-
-  <header>
-    <button id="profileBtn" class="profile-btn">👤 Profile</button>
-    <h1>🧠 LeetCode Dashboard</h1>
-    <div class="filters">
-      <div class="stats" role="navigation" aria-label="Filter by difficulty">
-        <div data-difficulty="all">Total: <span id="total"></span></div>
-        <div class="easy" data-difficulty="easy">Easy: <span id="easy"></span></div>
-        <div class="medium" data-difficulty="medium">Medium: <span id="medium"></span></div>
-        <div class="hard" data-difficulty="hard">Hard: <span id="hard"></span></div>
+  <div class="container">
+    <main>
+      <h1 class="brand">CodeTrack</h1>
+      <p class="subtitle">Practice. Track. Improve. A beginner-friendly coding platform built with HTML, CSS, and vanilla JavaScript.</p>
+      <div class="form-row" id="authTabs">
+        <button type="button" id="loginTab" class="button-primary">Login</button>
+        <button type="button" id="signupTab" class="button-secondary">Create Account</button>
       </div>
-
-      <div class="languages" role="navigation" aria-label="Filter by language">
-        <div data-language="all">All Languages</div>
-        <div data-language="python">Python</div>
-        <div data-language="java">Java</div>
-      </div>
-
-      <div class="status-filter" role="navigation" aria-label="Filter by status">
-        <div data-status="all">All Status</div>
-        <div data-status="solved">Solved</div>
-        <div data-status="revision">Revision</div>
-        <div data-status="todo">Todo</div>
-      </div>
-    </div>
-  </header>
-
-  <div id="problemList" class="grid"></div>
-
-  <!-- Solution Modal -->
-  <div id="solutionModal" class="modal" aria-hidden="true">
-    <div class="modal-content" role="dialog" aria-modal="true">
-      <header class="modal-header">
-        <h2 id="modalTitle">Solution</h2>
-        <button id="modalClose" aria-label="Close">Close</button>
-      </header>
-      <pre id="modalCode" class="modal-code"></pre>
-    </div>
-  </div>
-
-  <!-- Profile Modal -->
-  <div id="profileModal" class="modal" aria-hidden="true">
-    <div class="modal-content profile-modal" role="dialog" aria-modal="true">
-      <header class="modal-header">
-        <h2>Profile Dashboard</h2>
-        <button id="profileClose" aria-label="Close">Close</button>
-      </header>
-      <div class="profile-content">
-        <div class="profile-stats">
-          <div class="stat-card">
-            <h3>Total Solved</h3>
-            <span id="profileTotal" class="stat-number">0</span>
-          </div>
-          <div class="stat-card">
-            <h3>Easy</h3>
-            <span id="profileEasy" class="stat-number easy">0</span>
-          </div>
-          <div class="stat-card">
-            <h3>Medium</h3>
-            <span id="profileMedium" class="stat-number medium">0</span>
-          </div>
-          <div class="stat-card">
-            <h3>Hard</h3>
-            <span id="profileHard" class="stat-number hard">0</span>
-          </div>
+      <form id="authForm">
+        <div class="form-row" id="nameGroup" style="display:none;">
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" placeholder="Your name" autocomplete="name">
         </div>
-
-        <div class="progress-section">
-          <h3>Progress</h3>
-          <div class="progress-bar">
-            <div id="progressFill" class="progress-fill"></div>
-          </div>
-          <p id="progressText">0% Complete</p>
+        <div class="form-row">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required>
         </div>
-
-        <div class="languages-section">
-          <h3>Languages Used</h3>
-          <div id="languagesList" class="languages-list"></div>
+        <div class="form-row">
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" placeholder="Minimum 6 characters" autocomplete="current-password" required>
         </div>
-<div class="streak-section">
-  <h3>Current Streak</h3>
-  <p id="streakCount">5 🔥</p>
-</div>
-<div class="tags-section">
-  <h3>Top Topics</h3>
-  <div id="tagsList">
-    <span class="tag">Array</span>
-    <span class="tag">DP</span>
-    <span class="tag">Graph</span>
+        <button type="submit" id="authSubmit" class="button-primary">Login</button>
+      </form>
+      <button id="demoSignIn" class="small-button">Continue as Demo</button>
+      <p class="message" id="authMessage"></p>
+      <p class="footer-note">Demo authentication only. Replace with backend authentication before using this application in production.</p>
+    </main>
   </div>
-</div>
-
-      </div>
-    </div>
-  </div>
-
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="script.js"></script>
+  <script src="js/state.js" defer></script>
+  <script src="js/theme.js" defer></script>
+  <script src="js/auth.js" defer></script>
 </body>
 </html>

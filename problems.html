@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CodeTrack | Problems</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <div class="brand-title"><span>CodeTrack</span> Problems</div>
+      <nav class="top-nav" aria-label="Primary navigation">
+        <div class="nav-menu" id="navMenu">
+          <button class="nav-menu-button" id="navMenuButton" aria-haspopup="true" aria-expanded="false">👤</button>
+          <div class="nav-menu-dropdown" role="menu" aria-label="Profile menu">
+            <a class="nav-menu-link" role="menuitem" href="profile.html">Profile</a>
+            <a class="nav-menu-link" role="menuitem" href="dashboard.html">Dashboard</a>
+            <a class="nav-menu-link" role="menuitem" href="profile.html">Progress</a>
+            <a class="nav-menu-link" role="menuitem" href="profile.html#achievements">Achievements</a>
+            <a class="nav-menu-link" role="menuitem" href="profile.html#history">History</a>
+            <a class="nav-menu-link" role="menuitem" href="problems.html">Problems</a>
+            <a class="nav-menu-link" role="menuitem" href="rules.html">Rules</a>
+            <button class="nav-menu-action" role="menuitem" data-theme-toggle>Toggle Theme</button>
+            <button class="nav-menu-action" id="logoutButton" role="menuitem">Logout</button>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <section class="page-panel">
+      <div class="panel-header">
+        <div>
+          <h1 class="panel-title">Problem Library</h1>
+          <p class="panel-subtitle">Search, filter, and choose problems to practice by difficulty, language, or topic.</p>
+        </div>
+      </div>
+
+      <div class="grid" style="grid-template-columns: 1fr 280px; gap: 22px; align-items:start;">
+        <div>
+          <div class="card" style="margin-bottom: 18px;">
+            <label class="label-text" for="searchInput">Search problems</label>
+            <input id="searchInput" class="input-field" type="search" placeholder="🔍 Search problems...">
+          </div>
+
+          <div class="card">
+            <div class="grid" style="grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-bottom: 18px;">
+              <div>
+                <p class="section-title">Difficulty</p>
+                <div id="difficultyFilters"></div>
+              </div>
+              <div>
+                <p class="section-title">Language</p>
+                <div id="languageFilters"></div>
+              </div>
+            </div>
+            <div>
+              <p class="section-title">Status</p>
+              <div id="statusFilters"></div>
+            </div>
+            <div style="margin-top:18px;">
+              <p class="section-title">Topics</p>
+              <div id="topicFilters"></div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="card">
+            <p class="section-title">Overview</p>
+            <p id="querySummary">Showing all problems.</p>
+            <p class="no-results" id="problemsCount"></p>
+          </div>
+        </div>
+      </div>
+
+      <div id="problemCards" class="grid" style="margin-top:18px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));"></div>
+      <div class="no-results" id="emptyState" style="display:none; margin-top:18px;">No problems found. Try changing your filters.</div>
+    </section>
+  </div>
+
+  <script src="data/problems.js" defer></script>
+  <script src="js/state.js" defer></script>
+  <script src="js/theme.js" defer></script>
+  <script src="js/problems.js" defer></script>
+</body>
+</html>

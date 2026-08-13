@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CodeTrack | Profile</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <div class="brand-title"><span>CodeTrack</span> Profile</div>
+      <nav class="top-nav" aria-label="Primary navigation">
+        <div class="nav-menu" id="navMenu">
+          <button class="nav-menu-button" id="navMenuButton" aria-haspopup="true" aria-expanded="false">👤</button>
+          <div class="nav-menu-dropdown" role="menu" aria-label="Profile menu">
+            <a class="nav-menu-link" role="menuitem" href="profile.html">Profile</a>
+            <a class="nav-menu-link" role="menuitem" href="dashboard.html">Dashboard</a>
+            <a class="nav-menu-link" role="menuitem" href="profile.html">Progress</a>
+            <a class="nav-menu-link" role="menuitem" href="profile.html#achievements">Achievements</a>
+            <a class="nav-menu-link" role="menuitem" href="profile.html#history">History</a>
+            <a class="nav-menu-link" role="menuitem" href="problems.html">Problems</a>
+            <a class="nav-menu-link" role="menuitem" href="rules.html">Rules</a>
+            <button class="nav-menu-action" role="menuitem" data-theme-toggle>Toggle Theme</button>
+            <button class="nav-menu-action" id="logoutButton" role="menuitem">Logout</button>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <section class="page-panel">
+      <div class="panel-header">
+        <div>
+          <h1 class="panel-title">Your Profile</h1>
+          <p class="panel-subtitle">A clean developer dashboard for your coding progress, XP, streaks, and achievements.</p>
+        </div>
+        <button class="button-primary" id="editProfileButton">Edit Profile</button>
+      </div>
+
+      <div class="profile-top-grid">
+        <div class="card profile-card">
+          <div class="profile-panel-header">
+            <div id="profileAvatar" class="profile-avatar"></div>
+            <div>
+              <p class="profile-display-name" id="profileDisplayName">Display Name</p>
+              <p class="profile-username" id="profileUsername">@username</p>
+            </div>
+          </div>
+
+          <div class="profile-level-block">
+            <div>
+              <p class="label-text">LEVEL</p>
+              <h2 id="profileLevel">1</h2>
+              <p class="subtle-text" id="profileLevelTitle">🌱 Beginner</p>
+            </div>
+            <div class="profile-xp-block">
+              <div class="profile-xp-header">
+                <span>XP</span>
+                <span id="profileXpValue">0 XP</span>
+              </div>
+              <div class="progress-bar"><div id="profileXpProgress" class="progress-fill"></div></div>
+              <p class="muted-text" id="profileXpNext">0 XP to next level</p>
+            </div>
+          </div>
+
+          <div class="profile-metrics-grid">
+            <div class="metric-card">
+              <p class="metric-label">Solved</p>
+              <h3 id="profileSolved">0</h3>
+            </div>
+            <div class="metric-card">
+              <p class="metric-label">Current Streak</p>
+              <h3 id="profileStreak">0</h3>
+            </div>
+            <div class="metric-card">
+              <p class="metric-label">Longest Streak</p>
+              <h3 id="profileLongestStreak">0</h3>
+            </div>
+            <div class="metric-card">
+              <p class="metric-label">Challenges</p>
+              <h3 id="profileChallengesSummary">0 completed</h3>
+            </div>
+          </div>
+        </div>
+
+        <div class="card profile-summary-card">
+          <div class="profile-summary-top">
+            <div>
+              <p class="section-title">Difficulty Breakdown</p>
+              <div class="difficulty-row"><span>Easy</span><span id="difficultyEasyCount">0</span></div>
+              <div class="difficulty-progress"><span class="difficulty-fill easy" id="difficultyEasyBar"></span></div>
+              <div class="difficulty-row"><span>Medium</span><span id="difficultyMediumCount">0</span></div>
+              <div class="difficulty-progress"><span class="difficulty-fill medium" id="difficultyMediumBar"></span></div>
+              <div class="difficulty-row"><span>Hard</span><span id="difficultyHardCount">0</span></div>
+              <div class="difficulty-progress"><span class="difficulty-fill hard" id="difficultyHardBar"></span></div>
+            </div>
+          </div>
+          <div class="profile-summary-bottom">
+            <div class="small-card summary-stat">
+              <strong>Daily Challenge</strong>
+              <p id="profileChallengeText">Track daily challenge streaks and bonus XP.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="progress-section">
+        <div class="progress-section-header">
+          <h2 class="progress-title">Your Progress</h2>
+          <p class="progress-subtitle">Track your learning journey, daily activity, and DSA mastery.</p>
+        </div>
+
+        <div class="progress-main-grid">
+          <!-- Currently Learning Section -->
+          <div class="card progress-learning-card">
+            <p class="section-title">Currently Learning</p>
+            <div id="currentlyLearningList" class="learning-list"></div>
+          </div>
+
+          <!-- Activity Calendar Section -->
+          <div class="card progress-calendar-card">
+            <p class="section-title">Activity Calendar</p>
+            <div id="calendarCard" class="calendar-card">
+              <div class="calendar-title">
+                <span id="calendarMonthLabel">Loading...</span>
+                <button id="calendarTodayButton" class="small-button">Today</button>
+              </div>
+              <div class="calendar-grid" id="calendarGrid"></div>
+              <p id="calendarHint" class="muted-text">Click any day to review your activity.</p>
+            </div>
+          </div>
+
+          <!-- Problems Solved Stats Section -->
+          <div class="card progress-stats-card">
+            <p class="section-title">Problems Solved</p>
+            <div class="solved-stats">
+              <div class="solved-stat-item">
+                <p class="stat-label">Total</p>
+                <h3 id="progressTotalSolved" class="stat-value">0</h3>
+              </div>
+              <div class="solved-stat-item">
+                <p class="stat-label">Easy</p>
+                <h3 id="progressEasySolved" class="stat-value easy-text">0</h3>
+              </div>
+              <div class="solved-stat-item">
+                <p class="stat-label">Medium</p>
+                <h3 id="progressMediumSolved" class="stat-value medium-text">0</h3>
+              </div>
+              <div class="solved-stat-item">
+                <p class="stat-label">Hard</p>
+                <h3 id="progressHardSolved" class="stat-value hard-text">0</h3>
+              </div>
+            </div>
+
+            <div class="difficulty-breakdown">
+              <p class="section-subtitle">Difficulty Distribution</p>
+              <div class="difficulty-row">
+                <span>Easy</span>
+                <span id="progressDifficultyEasyCount">0</span>
+              </div>
+              <div class="difficulty-progress">
+                <span class="difficulty-fill easy" id="progressDifficultyEasyBar"></span>
+              </div>
+              <div class="difficulty-row">
+                <span>Medium</span>
+                <span id="progressDifficultyMediumCount">0</span>
+              </div>
+              <div class="difficulty-progress">
+                <span class="difficulty-fill medium" id="progressDifficultyMediumBar"></span>
+              </div>
+              <div class="difficulty-row">
+                <span>Hard</span>
+                <span id="progressDifficultyHardCount">0</span>
+              </div>
+              <div class="difficulty-progress">
+                <span class="difficulty-fill hard" id="progressDifficultyHardBar"></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- DSA Roadmap Section -->
+          <div class="card progress-roadmap-card">
+            <p class="section-title">DSA Roadmap</p>
+            <div id="roadmapList" class="roadmap-list"></div>
+          </div>
+        </div>
+
+        <div class="card" id="achievementsSection" style="display:none; margin-top:22px;" aria-hidden="true">
+          <p class="section-title" id="achievements">Achievements</p>
+          <div id="achievementsGrid" class="achievement-grid"></div>
+        </div>
+
+        <div class="card" id="historySection" style="display:none; margin-top:22px;" aria-hidden="true">
+          <p class="section-title" id="history">Recent Activity</p>
+          <div id="profileActivity"></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="modal" id="profileModal">
+      <div class="modal-card">
+        <div class="modal-header">
+          <div>
+            <h2>Choose your Avatar</h2>
+            <p class="muted-text">Update your display name, username, and profile avatar without leaving the page.</p>
+          </div>
+          <button class="modal-close" id="profileModalClose">✕</button>
+        </div>
+        <form id="profileForm">
+          <div class="form-row">
+            <label for="displayName">Display Name</label>
+            <input id="displayName" class="input-field" type="text" placeholder="Sonakshi" required>
+          </div>
+          <div class="form-row">
+            <label for="usernameInput">Username</label>
+            <input id="usernameInput" class="input-field" type="text" placeholder="@codefox" required>
+            <p id="usernameValidation" class="muted-text" style="margin-top:6px;"></p>
+          </div>
+          <div class="form-row">
+            <label>Avatar</label>
+            <div id="avatarGrid" class="avatar-grid"></div>
+          </div>
+          <div class="form-row">
+            <label for="profileAccentColor">Accent Color</label>
+            <input id="profileAccentColor" class="input-field" type="color" value="#38bdf8">
+          </div>
+          <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:18px; justify-content:flex-end;">
+            <button type="button" class="button-secondary" id="cancelProfileButton">Cancel</button>
+            <button type="submit" class="button-primary" id="saveProfileButton">Save Changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div id="toastContainer" class="toast-container"></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="data/problems.js" defer></script>
+  <script src="js/state.js" defer></script>
+  <script src="js/theme.js" defer></script>
+  <script src="js/profile.js" defer></script>
+</body>
+</html>

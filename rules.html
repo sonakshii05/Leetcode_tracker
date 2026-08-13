@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CodeTrack | Rules</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <div class="brand-title"><span>CodeTrack</span> Rules</div>
+      <nav class="top-nav" aria-label="Primary navigation">
+        <div class="nav-menu" id="navMenu">
+          <button class="nav-menu-button" id="navMenuButton" aria-haspopup="true" aria-expanded="false">👤</button>
+          <div class="nav-menu-dropdown" role="menu" aria-label="Profile menu">
+            <a class="nav-menu-link" role="menuitem" href="profile.html">Profile</a>
+            <a class="nav-menu-link" role="menuitem" href="dashboard.html">Dashboard</a>
+            <a class="nav-menu-link" role="menuitem" href="profile.html">Progress</a>
+            <a class="nav-menu-link" role="menuitem" href="profile.html#achievements">Achievements</a>
+            <a class="nav-menu-link" role="menuitem" href="profile.html#history">History</a>
+            <a class="nav-menu-link" role="menuitem" href="problems.html">Problems</a>
+            <a class="nav-menu-link" role="menuitem" href="rules.html">Rules</a>
+            <button class="nav-menu-action" role="menuitem" data-theme-toggle>Toggle Theme</button>
+            <button class="nav-menu-action" id="logoutButton" role="menuitem">Logout</button>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <section class="page-panel">
+      <div class="panel-header">
+        <div>
+          <h1 class="panel-title">Platform Rules</h1>
+          <p class="panel-subtitle">Learn how CodeTrack works, how hints behave, and how submissions are scored.</p>
+        </div>
+      </div>
+
+      <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:20px;">
+        <div class="card">
+          <h2>Platform Rules</h2>
+          <ul style="padding-left: 18px; color: var(--muted);">
+            <li>Solve problems independently before viewing hints or solutions.</li>
+            <li>Use hints to learn, not copy complete answers.</li>
+            <li>Progress is saved in the browser and tied to your account.</li>
+            <li>Do not rely on localStorage for secure authentication.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h2>Hint Rules</h2>
+          <ul style="padding-left: 18px; color: var(--muted);">
+            <li>3 hints per day are available.</li>
+            <li>Hints unlock only after attempting the problem.</li>
+            <li>Refreshing the page does not reset the daily hint limit.</li>
+            <li>Hints provide guidance, not full solution code.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h2>Problem Status</h2>
+          <ul style="padding-left: 18px; color: var(--muted);">
+            <li><strong>Todo</strong> – Not attempted yet.</li>
+            <li><strong>Revision</strong> – Previously solved, recommended review.</li>
+            <li><strong>Solved</strong> – Completed successfully.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h2>Submission Rules</h2>
+          <ul style="padding-left: 18px; color: var(--muted);">
+            <li><strong>Run Code</strong> executes sample tests and shows output.</li>
+            <li><strong>Submit</strong> validates all predefined test cases.</li>
+            <li><strong>Accepted</strong> means all test cases passed.</li>
+            <li><strong>Wrong Answer</strong> means one or more tests failed.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:18px;">
+        <h2>Progress Tracking</h2>
+        <p style="color: var(--muted);">Solved problems, difficulty distribution, streaks, and topic progress are updated automatically after successful submissions.</p>
+      </div>
+    </section>
+  </div>
+  <script src="js/state.js" defer></script>
+  <script src="js/theme.js" defer></script>
+  <script src="js/rules.js" defer></script>
+</body>
+</html>

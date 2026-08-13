@@ -7,102 +7,418 @@ const problems = [
     link: "solutions/sum.py"
   },
   {
-    name: "Add Two Numbers",
-    difficulty: "easy",
-    language: "python",
-    status: "solved",
-    link: "solutions/twoNumbers.py"
-  },
-
-  {
-    name: "Valid Parentheses",
-    difficulty: "easy",
-    status: "todo",
-    language: "python",
-    link: ""
-  },
-  {
     name: "Contains Duplicate",
     difficulty: "easy",
-    status: "todo",
+    language: "java",
+    status: "solved",
+    link: "solutions/contains_duplicates.java"
+  },
+  {
+    name: "Valid Anagram",
+    difficulty: "easy",
     language: "python",
+    status: "todo",
     link: ""
   },
   {
     name: "Best Time to Buy and Sell Stock",
     difficulty: "easy",
-    status: "todo",
     language: "python",
+    status: "todo",
     link: ""
   },
   {
-    name: "Binary Search",
+    name: "Valid Palindrome",
     difficulty: "easy",
-    status: "todo",
     language: "python",
+    status: "todo",
     link: ""
   },
   {
-    name: "Maximum Subarray",
+    name: "Majority Element",
     difficulty: "easy",
-    status: "todo",
     language: "python",
+    status: "todo",
+    link: ""
+  },
+  {
+    name: "Remove Duplicates from Sorted Array",
+    difficulty: "easy",
+    language: "java",
+    status: "solved",
+    link: "solutions/removeduplicates.java"
+  },
+  {
+    name: "Remove Element",
+    difficulty: "easy",
+    language: "python",
+    status: "todo",
+    link: ""
+  },
+  {
+    name: "Plus One",
+    difficulty: "easy",
+    language: "python",
+    status: "todo",
     link: ""
   },
   {
     name: "Merge Sorted Array",
     difficulty: "easy",
-    status: "todo",
     language: "python",
+    status: "todo",
     link: ""
   },
   {
-    name: "Valid Parentheses",
+    name: "Move Zeroes",
     difficulty: "easy",
-    status: "todo",
     language: "python",
-    link: "YOUR_GITHUB_FILE_LINK"
+    status: "todo",
+    link: ""
   },
   {
-    name: "Longest Substring Without Repeating Characters",
-    difficulty: "medium",
-    status: "todo",
+    name: "Find Pivot Index",
+    difficulty: "easy",
     language: "python",
+    status: "todo",
+    link: ""
+  },
+  {
+    name: "Missing Number",
+    difficulty: "easy",
+    language: "python",
+    status: "todo",
+    link: ""
+  },
+  {
+    name: "Intersection of Two Arrays",
+    difficulty: "easy",
+    language: "python",
+    status: "todo",
+    link: ""
+  },
+  {
+    name: "Intersection of Two Arrays II",
+    difficulty: "easy",
+    language: "python",
+    status: "todo",
+    link: ""
+  },
+  {
+    name: "Single Number",
+    difficulty: "easy",
+    language: "python",
+    status: "todo",
+    link: ""
+  },
+  {
+    name: "Maximum Subarray",
+    difficulty: "easy",
+    language: "python",
+    status: "todo",
+    link: ""
+  },
+  {
+    name: "Merge Strings Alternately",
+    difficulty: "easy",
+    language: "python",
+    status: "todo",
+    link: ""
+  },
+  {
+    name: "Find the Difference of Two Arrays",
+    difficulty: "easy",
+    language: "python",
+    status: "todo",
+    link: ""
+  },
+  {
+    name: "Find Common Characters",
+    difficulty: "easy",
+    language: "python",
+    status: "todo",
     link: ""
   },
   {
     name: "3Sum",
     difficulty: "medium",
-    status: "todo",
     language: "python",
+    status: "todo",
     link: ""
   },
   {
-    name: "Group Anagrams",
+    name: "Container With Most Water",
     difficulty: "medium",
-    status: "todo",
     language: "python",
+    status: "todo",
     link: ""
   },
   {
     name: "Product of Array Except Self",
     difficulty: "medium",
-    status: "todo",
     language: "python",
+    status: "todo",
     link: ""
   },
   {
-    name: "Longest Substring Without Repeating Characters",
+    name: "Maximum Product Subarray",
     difficulty: "medium",
-    status: "todo",
     language: "python",
-    link: "YOUR_GITHUB_FILE_LINK"
+    status: "todo",
+    link: ""
   },
-  { name: "Two Sum",
-     difficulty: "easy",
-      language: "java", 
-      status: "solved",
-      link: "solutions/TwoSum.java" }
+  {
+    name: "Subarray Sum Equals K",
+    difficulty: "medium",
+    language: "python",
+    status: "todo",
+    link: ""
+  },
+  {
+    name: "Longest Consecutive Sequence",
+    difficulty: "medium",
+    language: "python",
+    status: "todo",
+    link: ""
+  },
+  {
+    name: "Group Anagrams",
+    difficulty: "medium",
+    language: "python",
+    status: "todo",
+    link: ""
+  },
+  {
+    name: "Top K Frequent Elements",
+    difficulty: "medium",
+    language: "python",
+    status: "todo",
+    link: ""
+  },
+  {
+    name: "Sort Colors",
+    difficulty: "medium",
+    language: "python",
+    status: "todo",
+    link: ""
+  },
+  {
+    name: "Rotate Array",
+    difficulty: "medium",
+    language: "python",
+    status: "todo",
+    link: ""
+  },
+  {
+    name: "Find the Duplicate Number",
+    difficulty: "medium",
+    language: "python",
+    status: "todo",
+    link: ""
+  },
+  {
+    name: "Spiral Matrix",
+    difficulty: "medium",
+    language: "python",
+    status: "todo",
+    link: ""
+  },
+  {
+    name: "Set Matrix Zeroes",
+    difficulty: "medium",
+    language: "python",
+    status: "todo",
+    link: ""
+  },
+  {
+    name: "Rotate Image",
+    difficulty: "medium",
+    language: "python",
+    status: "todo",
+    link: ""
+  },
+  {
+    name: "Search in Rotated Sorted Array",
+    difficulty: "medium",
+    language: "python",
+    status: "todo",
+    link: ""
+  },
+  {
+    name: "Find First and Last Position of Element in Sorted Array",
+    difficulty: "medium",
+    language: "python",
+    status: "todo",
+    link: ""
+  },
+  {
+    name: "Combination Sum",
+    difficulty: "medium",
+    language: "python",
+    status: "todo",
+    link: ""
+  },
+  {
+    name: "Subsets",
+    difficulty: "medium",
+    language: "python",
+    status: "todo",
+    link: ""
+  },
+  {
+    name: "Permutations",
+    difficulty: "medium",
+    language: "python",
+    status: "todo",
+    link: ""
+  },
+  {
+    name: "Jump Game",
+    difficulty: "medium",
+    language: "python",
+    status: "todo",
+    link: ""
+  },
+  {
+    name: "Trapping Rain Water",
+    difficulty: "hard",
+    language: "python",
+    status: "todo",
+    link: ""
+  },
+  {
+    name: "First Missing Positive",
+    difficulty: "hard",
+    language: "python",
+    status: "todo",
+    link: ""
+  },
+  {
+    name: "Median of Two Sorted Arrays",
+    difficulty: "hard",
+    language: "python",
+    status: "todo",
+    link: ""
+  },
+  {
+    name: "Merge k Sorted Lists",
+    difficulty: "hard",
+    language: "python",
+    status: "todo",
+    link: ""
+  },
+  {
+    name: "Largest Rectangle in Histogram",
+    difficulty: "hard",
+    language: "python",
+    status: "todo",
+    link: ""
+  },
+  {
+    name: "Sliding Window Maximum",
+    difficulty: "hard",
+    language: "python",
+    status: "todo",
+    link: ""
+  },
+  {
+    name: "Minimum Window Substring",
+    difficulty: "hard",
+    language: "python",
+    status: "todo",
+    link: ""
+  },
+  {
+    name: "Maximum Sum of 3 Non-Overlapping Subarrays",
+    difficulty: "hard",
+    language: "python",
+    status: "todo",
+    link: ""
+  },
+  {
+    name: "Candy",
+    difficulty: "hard",
+    language: "python",
+    status: "todo",
+    link: ""
+  },
+  {
+    name: "N-Queens",
+    difficulty: "hard",
+    language: "python",
+    status: "todo",
+    link: ""
+  },
+  {
+    name: "Sudoku Solver",
+    difficulty: "hard",
+    language: "python",
+    status: "todo",
+    link: ""
+  },
+  {
+    name: "First Missing Positive",
+    difficulty: "hard",
+    language: "python",
+    status: "todo",
+    link: ""
+  },
+  {
+    name: "Substring with Concatenation of All Words",
+    difficulty: "hard",
+    language: "python",
+    status: "todo",
+    link: ""
+  },
+  {
+    name: "Count of Smaller Numbers After Self",
+    difficulty: "hard",
+    language: "python",
+    status: "todo",
+    link: ""
+  },
+  {
+    name: "Reverse Pairs",
+    difficulty: "hard",
+    language: "python",
+    status: "todo",
+    link: ""
+  },
+  {
+    name: "Shortest Subarray with Sum at Least K",
+    difficulty: "hard",
+    language: "python",
+    status: "todo",
+    link: ""
+  },
+  {
+    name: "Maximum Gap",
+    difficulty: "hard",
+    language: "python",
+    status: "todo",
+    link: ""
+  },
+  {
+    name: "Split Array Largest Sum",
+    difficulty: "hard",
+    language: "python",
+    status: "todo",
+    link: ""
+  },
+  {
+    name: "Patching Array",
+    difficulty: "hard",
+    language: "python",
+    status: "todo",
+    link: ""
+  },
+  {
+    name: "Create Maximum Number",
+    difficulty: "hard",
+    language: "python",
+    status: "todo",
+    link: ""
+  }
 ];
 
 /* ===============================

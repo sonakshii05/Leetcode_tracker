@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CodeTrack | Problem</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <div class="brand-title"><span>CodeTrack</span> Problem</div>
+      <nav class="top-nav" aria-label="Primary navigation">
+        <div class="nav-menu" id="navMenu">
+          <button class="nav-menu-button" id="navMenuButton" aria-haspopup="true" aria-expanded="false">👤</button>
+          <div class="nav-menu-dropdown" role="menu" aria-label="Profile menu">
+            <a class="nav-menu-link" role="menuitem" href="profile.html">Profile</a>
+            <a class="nav-menu-link" role="menuitem" href="dashboard.html">Dashboard</a>
+            <a class="nav-menu-link" role="menuitem" href="profile.html">Progress</a>
+            <a class="nav-menu-link" role="menuitem" href="profile.html#achievements">Achievements</a>
+            <a class="nav-menu-link" role="menuitem" href="profile.html#history">History</a>
+            <a class="nav-menu-link" role="menuitem" href="problems.html">Problems</a>
+            <a class="nav-menu-link" role="menuitem" href="rules.html">Rules</a>
+            <button class="nav-menu-action" role="menuitem" data-theme-toggle>Toggle Theme</button>
+            <button class="nav-menu-action" id="logoutButton" role="menuitem">Logout</button>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <section class="page-panel" id="problemPage">
+      <div id="problemContent">
+        <div class="panel-header" style="align-items:flex-start; gap:22px; flex-wrap:wrap;">
+          <div>
+            <h1 id="problemTitle" class="panel-title">Problem Name</h1>
+          <p class="panel-subtitle" id="problemMeta">Easy • Java • Array</p>
+        </div>
+        <div>
+          <div class="status-pill status-todo" id="problemStatus">Todo</div>
+        </div>
+      </div>
+
+      <div class="grid" style="grid-template-columns: 1.1fr 0.9fr; gap: 22px; margin-top:18px; align-items:start;">
+        <div>
+          <div class="card" style="margin-bottom:18px;">
+            <p class="section-title">Problem Description</p>
+            <p id="problemDescription" style="color: var(--muted); line-height:1.8;"></p>
+          </div>
+          <div class="card" style="margin-bottom:18px;">
+            <p class="section-title">Examples</p>
+            <div id="problemExamples"></div>
+          </div>
+          <div class="card" style="margin-bottom:18px;">
+            <p class="section-title">Constraints</p>
+            <div id="problemConstraints"></div>
+          </div>
+          <div class="card">
+            <p class="section-title">Hints</p>
+            <div id="hintStatus" style="margin-bottom: 14px; color: var(--muted);"></div>
+            <div id="hintList"></div>
+            <button id="problemHintButton" class="button-secondary" style="margin-top:14px;">View Hint</button>
+          </div>
+        </div>
+
+        <div>
+          <div class="card">
+            <div class="form-row" style="margin-bottom:18px;">
+              <div>
+                <p class="label-text">Language</p>
+                <select id="editorLanguage" class="select-field">
+                  <option value="python">Python</option>
+                  <option value="java">Java</option>
+                </select>
+              </div>
+              <div>
+                <p class="label-text">Problem topic</p>
+                <div id="problemTopics"></div>
+              </div>
+            </div>
+            <p class="label-text">Code Editor</p>
+            <div class="code-editor-shell">
+              <div id="codeGutter" class="code-gutter"></div>
+              <textarea id="codeEditor" class="textarea-field" rows="18"></textarea>
+            </div>
+            <div class="timer-panel">
+              <div class="timer-row">
+                <div>
+                  <p class="label-text" style="margin-bottom: 8px;">Problem Timer</p>
+                  <div id="problemTimerDisplay" class="timer-display">00:00</div>
+                  <div id="timerState" style="color: var(--muted); margin-top: 6px;">Tracking time spent on this problem.</div>
+                </div>
+                <div style="display:flex; gap:12px; flex-wrap:wrap; align-items:center; margin-top:12px;">
+                  <button id="pauseTimerButton" class="button-secondary">Pause</button>
+                  <button id="resumeTimerButton" class="button-secondary" style="display:none;">Resume</button>
+                </div>
+              </div>
+            </div>
+            <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:16px;">
+              <button class="button-primary" id="runButton">Run Code</button>
+              <button class="button-secondary" id="submitButton">Submit</button>
+            </div>
+          </div>
+
+          <div class="card custom-test-card">
+            <p class="section-title">Custom Test Case</p>
+            <label class="label-text" for="customInput">Input</label>
+            <textarea id="customInput" class="textarea-field" rows="4" placeholder="Enter a custom input example"></textarea>
+            <label class="label-text" for="customExpected" style="margin-top:12px;">Expected Output (optional)</label>
+            <input id="customExpected" class="input-field" type="text" placeholder="Enter expected output">
+            <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:14px;">
+              <button id="runCustomTestButton" class="button-primary">Run Custom Test</button>
+            </div>
+            <div id="customTestResult" class="result-output" style="margin-top:16px; min-height:130px;">Run a custom test to see result details.</div>
+            <div style="margin-top:18px;">
+              <p class="section-title">Recent Tests</p>
+              <div id="customTestHistory" style="color: var(--muted);">No recent custom tests yet.</div>
+            </div>
+          </div>
+
+          <div class="card" style="margin-top:18px;">
+            <p class="section-title">Output</p>
+            <div id="resultOutput" class="result-output" style="min-height: 160px;">Run code to see test results.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:18px;" id="submissionHistoryCard">
+        <p class="section-title">Submission History</p>
+        <div id="submissionHistory"></div>
+      </div>
+    </section>
+  </div>
+
+  <script src="data/problems.js" defer></script>
+  <script src="js/state.js" defer></script>
+  <script src="js/theme.js" defer></script>
+  <script src="js/problem.js" defer></script>
+</body>
+</html>

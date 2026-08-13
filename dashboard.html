@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CodeTrack | Dashboard</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <div class="brand-title"><span>CodeTrack</span> Dashboard</div>
+      <nav class="top-nav" aria-label="Primary navigation">
+        <div class="nav-menu" id="navMenu">
+          <button class="nav-menu-button" id="navMenuButton" aria-haspopup="true" aria-expanded="false">👤</button>
+          <div class="nav-menu-dropdown" role="menu" aria-label="Profile menu">
+            <a class="nav-menu-link" role="menuitem" href="profile.html">Profile</a>
+            <a class="nav-menu-link" role="menuitem" href="dashboard.html">Dashboard</a>
+            <a class="nav-menu-link" role="menuitem" href="profile.html">Progress</a>
+            <a class="nav-menu-link" role="menuitem" href="profile.html#achievements">Achievements</a>
+            <a class="nav-menu-link" role="menuitem" href="profile.html#history">History</a>
+            <a class="nav-menu-link" role="menuitem" href="problems.html">Problems</a>
+            <a class="nav-menu-link" role="menuitem" href="rules.html">Rules</a>
+            <button class="nav-menu-action" role="menuitem" data-theme-toggle>Toggle Theme</button>
+            <button class="nav-menu-action" id="logoutButton" role="menuitem">Logout</button>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <section class="page-panel">
+      <div class="panel-header">
+        <div>
+          <h1 class="panel-title">Good evening, <span id="userName">Coder</span> 👋</h1>
+          <p class="panel-subtitle">Ready to solve something today? Check your progress and continue learning.</p>
+        </div>
+        <div>
+          <button class="button-primary" onclick="location.href='problems.html'">Solve a Problem</button>
+        </div>
+      </div>
+
+      <div class="grid" style="grid-template-columns: 1.9fr 1fr; gap: 18px; margin-bottom: 22px;">
+        <div class="card daily-challenge-card">
+          <div class="section-title">
+            <span>🔥 DAILY CHALLENGE</span>
+            <span class="badge-daily">DAILY CHALLENGE</span>
+          </div>
+          <div>
+            <h2 id="dailyChallengeName" class="daily-challenge-name">Loading daily challenge...</h2>
+            <div id="dailyChallengeMeta" class="daily-challenge-meta"></div>
+            <p id="dailyChallengeDescription" style="margin-top: 16px; color: var(--muted);"></p>
+          </div>
+          <div class="daily-challenge-footer">
+            <div>
+              <div id="dailyChallengeStatus" class="status-pill status-todo">Not Completed</div>
+              <p id="dailyChallengeHint" style="margin-top: 10px; color: var(--muted);">Solve today's challenge and maintain your streak.</p>
+            </div>
+            <div style="display:flex; gap:12px; flex-wrap:wrap; align-items:center;">
+              <div style="font-weight:700; color:var(--text);">⏱ Today</div>
+              <button id="dailyChallengeAction" class="button-primary">Solve Challenge</button>
+            </div>
+          </div>
+        </div>
+        <div class="grid" style="grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 15px;">
+          <div class="card small-card">
+            <p class="section-title">Total Solved</p>
+            <h2 id="dashboardSolved">0</h2>
+          </div>
+          <div class="card small-card">
+            <p class="section-title">Current Streak</p>
+            <h2 id="dashboardStreak">0 Days</h2>
+          </div>
+          <div class="card small-card">
+            <p class="section-title">Easy Solved</p>
+            <h2 id="dashboardEasy">0</h2>
+          </div>
+          <div class="card small-card">
+            <p class="section-title">Medium Solved</p>
+            <h2 id="dashboardMedium">0</h2>
+          </div>
+          <div class="card small-card">
+            <p class="section-title">Hard Solved</p>
+            <h2 id="dashboardHard">0</h2>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:24px;">
+        <p class="section-title">Overall Progress</p>
+        <div class="progress-bar">
+          <div id="dashboardProgressFill" class="progress-fill"></div>
+        </div>
+        <p id="dashboardProgressText" style="margin-top:12px; color: var(--muted);">0% Completed</p>
+      </div>
+
+      <div class="grid" style="grid-template-columns: 1.4fr 1fr; margin-top:22px; gap:22px; align-items:start;">
+        <div class="card">
+          <p class="section-title">Continue Learning</p>
+          <div id="continueCard"></div>
+        </div>
+        <div class="card">
+          <p class="section-title">Difficulty Distribution</p>
+          <canvas id="dashboardChart" width="400" height="260"></canvas>
+        </div>
+      </div>
+
+    </section>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="data/problems.js" defer></script>
+  <script src="js/state.js" defer></script>
+  <script src="js/theme.js" defer></script>
+  <script src="js/dashboard.js" defer></script>
+</body>
+</html>
